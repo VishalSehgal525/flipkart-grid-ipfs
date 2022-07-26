@@ -20,9 +20,11 @@ const addImage = (imagePath) => {
     console.log(`Libaray not imported MONA! Kar kuch. 🌚`);
   }
   if (!imagePath || imagePath.length === 0) {
-    console.log("File toh dedo bhai sahab! 🗃");
+    return console.log("File toh dedo bhai sahab! 🗃");
   }
   const file = imagePath[0];
   const result = await(ipfs).add(file);
   return result;
 };
+
+module.exports = { addImage };
