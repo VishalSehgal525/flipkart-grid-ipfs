@@ -1,0 +1,14 @@
+{
+  "name": "warrantyverse",
+  "version": "1.0.0",
+  "description": "WarrantyVerse file uploading on IPFS",
+  "main": "ipfs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MoonKnights",
+  "license": "ISC",
+  "dependencies": {
+    "ipfs-http-client": "^57.0.3"
+  }
+}
