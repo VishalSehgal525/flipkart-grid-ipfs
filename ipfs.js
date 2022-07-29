@@ -13,6 +13,7 @@ async function loadIpfs() {
   return ipfs;
 }
 
+const fs = require("fs");
 const ipfs = loadIpfs();
 
 const addImage = (imagePath) => {
@@ -27,4 +28,32 @@ const addImage = (imagePath) => {
   return result;
 };
 
-module.exports = { addImage };
+const addFile = (prodName, compName, sName, expDate, dop, prodSerial) => {
+  data = {
+    productName: prodName,
+    companyName: compName,
+    serialName: sName,
+    expireDate: expDate,
+    dateOfPurchase: dop,
+    productSerial: prodSerial,
+  };
+  const file = JSON.stringify(data);
+  const result = await(ipfs).add(file);
+  return result;
+};
+
+const addData = (
+  prodName,
+  compName,
+  sName,
+  expDate,
+  dop,
+  prodSerial,
+  imagePath
+) => {
+  const hash1 = addImage(imagePath);
+  const hash2 = addFile(prodName, compName, sName, expDate, dop, prodSerial);
+  return [hash1, hash2];
+};
+
+module.exports = { addData };
